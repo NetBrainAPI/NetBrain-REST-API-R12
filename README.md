@@ -3,19 +3,14 @@
 # Netbrain REST API Documentation
 
 Version 12<br>
-To view details about integration workflows with other platforms, view "Platform Integration Documentation". These include workflows like Trigger Diagnosis where NetBrain is triggered from ticketing and monitoring tools to generate map URLs. Integration Workflows also incliudes Single Panel of Glass where data from ticketing and monitoring tools is overalyed on NetBrain Map.<br>
-To view details about use cases which can be implemented with NetBrain REST APIs, see "Golden Use Case Templates".<br>
-To see the list of all REST APIs view "REST APIs Documentation".<br>
+To view details about Integration Workflows with other platforms, please refer to `Platform Integration Documentation`. 
+Integration Workflow includes workflows such as `Trigger Diagnosis`, where NetBrain is triggered from ticketing and monitoring tools to generate map URLs, and `Single Panel of Glass`, where data from ticketing and monitoring tools is overalyed on NetBrain Map.<br>
+To view details about use cases which can be implemented with NetBrain REST APIs, please refer to `Golden Use Case Templates`.<br>
+To view the full list of all REST APIs, please refer to `REST APIs Documentation`.<br>
 
 ## New APIs in this version
+N/A
 
-1) [Get Check Device Count in Network Setting API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Network%20Setting/Get%20Check%20Device%20Count%20in%20Network%20Setting.md)<br>
-2) [Update Device Count in Network Setting API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Network%20Setting/Update%20Device%20Count%20in%20Network%20Setting.md)<br>
-3) [Create Dynamic Search API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Site%20Management/Create%20Dynamic%20Search%20API.md)<br>
-4) [Site Transaction Heartbeat API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Site%20Management/Site%20Transaction%20Heartbeat%20API.md)<br>
-5) [Update Site Properties API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Site%20Management/Update%20Site%20Properties%20API.md)<br>
-6) [Get One Ip Table API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20One%20Ip-Table%20API.md)<br>
-7) [Get Users API](https://github.com/NetBrainAPI/NetBrain-REST-API-R11.1b/blob/main/REST%20APIs%20Documentation/User%20Management/Get%20Users%20API.md)
 
 ## Section 1) Golden Use Case Templates
 1) [Get Path Detail Information by Calling APIs](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/Golden%20Use%20Case%20Templates/Get%20Path%20By%20Calling%20APIs.md)<br>

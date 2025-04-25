@@ -1,8 +1,8 @@
 
 # Device API Design
 
-## ***GET*** /V1/CMDB/DeviceGroups
-Call this API to export the device's current baseline data table
+## ***GET*** /V1/CMDB/Devices/DeviceTableData
+Call this API to export the device's current baseline data table.
 
 ## Detail Information
 
@@ -29,15 +29,15 @@ Call this API to export the device's current baseline data table
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-| hostname | string  | Hostname of the device |
-| ip | string  | Management IP address of the device |
+| hostname | string  | Hostname of the device. |
+| ip | string  | Management IP address of the device. |
 |  |  | *At least one of `hostname` or `ip` should have value. <br> They cannot both be empty. |
-| tableName* | string  | Name of the Device Data Table. <br>Names for System Tables are constant; <br>1. routeTable <br>2. arpTable <br>3. macTable  <br>4. cdpTable <br>5. stpTable <br>6.bgpNbrTable <br> <br>for NCT Table, please use the real tabe name. e.g. Qos Mapping Table|
-| vrf^ | string  | Name of VRF, if applicable; otherwise, empty |
-| subTableName^ | string  | Name of NCT Table's sub-table name, if applicable; otherwise, empty |
-| pageIndex* | integer  | Page Index for gets & sets. Starts from 0 |
-| pageSize* | integer  | Page size for gets & sets. <br>If PageSize equals 0, PageIndex must be 0; This will return all rows |
-|  |  | ^ indicates optional parameter <br>* indicates mandatory parameter  |
+| tableName* | string  | Name of the Device Data Table. <br>Names for System Tables are constant; <br>1. routeTable <br>2. arpTable <br>3. macTable  <br>4. cdpTable <br>5. stpTable <br>6. bgpNbrTable <br> <br>For NCT Table, please use the real tabe name. e.g. QoS Mapping Table|
+| vrf^ | string  | Name of VRF, if applicable; otherwise, empty. |
+| subTableName^ | string  | Name of NCT Table's sub-table name, if applicable; otherwise, empty. |
+| pageIndex* | integer  | Page Index for gets & sets. Starts from 0. |
+| pageSize* | integer  | Page size for gets & sets. <br>If PageSize equals 0, PageIndex must be 0; This will return all rows. |
+|  |  | ^ indicates optional parameter. <br>* indicates mandatory parameter.  |
 
 
 ## Headers
@@ -63,11 +63,11 @@ Call this API to export the device's current baseline data table
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|statusCode| integer | Code issued by NetBrain server indicating the execution result  |
-|statusDescription| string | The explanation of the status code |
-|columns| list | List of columns according to the Data Table |
-|rows| nested list | List(s) of values of respective columns, according to the Data Table |
-|isAllLoaded | boolean | Indicates if partial of full rows of Data Table are loaded |
+|columns| list | List of columns according to the Data Table. |
+|rows| nested list | List(s) of values of respective columns, according to the Data Table. |
+|isAllLoaded | boolean | Indicates if partial of full rows of Data Table are loaded. |
+|statusCode| integer | Code issued by NetBrain server indicating the execution result.  |
+|statusDescription| string | The explanation of the status code. |
 
 > ***Example***
 ```python

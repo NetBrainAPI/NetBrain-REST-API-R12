@@ -1,6 +1,7 @@
 
 # Authentication and Authorization API
 This API creates an authentication token, which can be used to start a session with user's body information and NetBrain server URL.<br>
+<br>
 There are 3 methods to get the API token:
 1. [Session API](#session-api)
 2. [Token User](#token-user)
@@ -293,9 +294,9 @@ Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/hel
 
 1. Go to `Open API` > `Add OAuth Client` to bind a user.<br>
 ![OAuth Bind User](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_OAuth_bind_user.png)
-2. Copy the Client ID and Client Secret.<br>
+2. Copy the `Client ID` and `Client Secret`.<br>
 ![OAuth ID Secret](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_OAuth_clientID_clientSecret.png)
 3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. <br>
 ![OAuth Get Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/3_OAuth_get_token.png)
-4. Get the token value from the API response data, and set it to Headers['Token']<br>
+4. Get the token value from the API response data, and set it to `Headers['Token']`<br>
 ![OAuth Use Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/4_OAuth_use_token.png)

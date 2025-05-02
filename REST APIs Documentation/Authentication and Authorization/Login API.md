@@ -278,13 +278,19 @@ Response:
 
 # Token User <a name="token-user"></a>
 1. Before R12, the user needed to first create a token user and set up user privilege, then generate Auth Token.<br>
-In R12, the user needs to first enable Token User Authentication under `Open API`, then replicate #1.
+![Token Before R12](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_Token_BeforeR12.png)
 
-2. Set up the Auth token to Headers["Token"] of REST API
+In R12, the user needs to first enable Token User Authentication under `Open API`, then replicate step #1.<br>
+![Token After R12](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_Token_AfterR12.png)
+
+2. Set up the Auth token to Headers["Token"] of REST API.<br>
+![Token SetUp](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_Token_SetUpAuthToken.png)
+
 
 # OAuth2.0 - Recommended <a name=oauth20---recommended>
 Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/help/HTML/open-api.html) for more information.
 <br>
+
 1. Go to `Open API` > `Add OAuth Client` to bind a user.
 2. Copy the Client ID and Client Secret.
 3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. 

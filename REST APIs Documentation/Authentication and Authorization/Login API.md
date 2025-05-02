@@ -1,15 +1,21 @@
 
 # Authentication and Authorization API
+This API creates an authentication token, which can be used to start a session with user's body information and NetBrain server URL.<br>
+There are 3 methods to get the API token:
+1. [Session API](#session-api)
+2. [Token User](#token-user)
+3. [OAuth2.0 - Recommended](#oauth20---recommended)
+
+
+
+# Session API <a name="session-api"></a>
 OpenAPI version 1.0.0
 
 ## ***POST*** /V1/Session
 
- This method creates an authentication token and starts a session with user's body information and netbrain server url.
-
-
 ## Detail Information
 
-> **Title** : Log in API<br>
+> **Title** : Login API<br>
 
 > **Version** : 01/23/2019.
 
@@ -268,3 +274,18 @@ Response:
         "statusDescription": "Invalid username or password."
     }
 ```
+
+
+# Token User <a name="token-user"></a>
+1. Before R12, the user needed to first create a token user and set up user privilege, then generate Auth Token.<br>
+In R12, the user needs to first enable Token User Authentication under `Open API`, then replicate #1.
+
+2. Set up the Auth token to Headers["Token"] of REST API
+
+# OAuth2.0 - Recommended <a name=oauth20---recommended>
+Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/help/HTML/open-api.html) for more information.
+<br>
+1. Go to `Open API` > `Add OAuth Client` to bind a user.
+2. Copy the Client ID and Client Secret.
+3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. 
+4. Get the token value from the API response data, and set it to Headers['Token']

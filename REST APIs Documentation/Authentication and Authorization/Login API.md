@@ -280,18 +280,22 @@ Response:
 1. Before R12, the user needed to first create a token user and set up user privilege, then generate Auth Token.<br>
 ![Token Before R12](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_Token_BeforeR12.png)
 
-In R12, the user needs to first enable Token User Authentication under `Open API`, then replicate step #1.<br>
+   In R12, the user needs to first enable Token User Authentication under `Open API`, then replicate step #1.<br>
 ![Token After R12](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_Token_AfterR12.png)
 
 2. Set up the Auth token to Headers["Token"] of REST API.<br>
-![Token SetUp](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_Token_SetUpAuthToken.png)
+![Token SetUp](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_Token_setup_auth_token.png)
 
 
 # OAuth2.0 - Recommended <a name=oauth20---recommended>
 Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/help/HTML/open-api.html) for more information.
 <br>
 
-1. Go to `Open API` > `Add OAuth Client` to bind a user.
-2. Copy the Client ID and Client Secret.
-3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. 
-4. Get the token value from the API response data, and set it to Headers['Token']
+1. Go to `Open API` > `Add OAuth Client` to bind a user.<br>
+![OAuth Bind User](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/1_OAuth_bind_user.png)
+2. Copy the Client ID and Client Secret.<br>
+![OAuth ID Secret](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_OAuth_clientID_clientSecret.png)
+3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. <br>
+![OAuth Get Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/3_OAuth_get_token.png)
+4. Get the token value from the API response data, and set it to Headers['Token']<br>
+![OAuth Use Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/4_OAuth_use_token.png)

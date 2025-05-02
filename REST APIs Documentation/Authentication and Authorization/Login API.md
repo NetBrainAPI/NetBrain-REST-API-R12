@@ -299,4 +299,3 @@ Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/hel
 3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. <br>
 ![OAuth Get Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/3_OAuth_get_token.png)
 4. Get the token value from the API response data, and set it to `Headers['Token']`<br>
-![OAuth Use Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/4_OAuth_use_token.png)

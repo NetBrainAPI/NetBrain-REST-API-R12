@@ -55,20 +55,22 @@ This API is used to get devices and their attributes data in batch. The response
 |token|string|Authentication token, get from login API.|
 
 ## Response
+** Note that the response will differ based on the parameter. 
 
 |**Name**|**Type**|**Description**|
 |------|------|------|
-|statusCode|integer|Code issued by NetBrain server indicating the execution result.|
-|statusDescription|string|The explanation of the status code.|
 |devices|string[]|A list of devices.|
-|totalResultCount|integer|The total amount of the found records.|
-|devices.devicesID|string|The device ID.|
-|devices.deviceTypeName|string|The type of the returned device, such as Cisco Router.|
+|devices.id|string|The device ID.|
 |devices.mgmtIP|string|The management IP address of the returned device.|
 |devices.hostname|string|The hostname of returned device.|
+|devices.deviceTypeName|string|The type of the returned device; e.g. Cisco Router|
 |devices.customAttribute1|Refer to GDR data type|Customized Attribute 1.|
 |devices.customAttribute2|Refer to GDR data type|Customized Attribute 2.|
+|devices.firstDiscoverTime|string|First discovery time of device.|
+|devices.lastDiscoverTime|string|Last discovery time of device.|
 |...|...|...|
+|statusCode|integer|Code issued by NetBrain server indicating the execution result.|
+|statusDescription|string|The explanation of the status code.|
 
 
 # Full Example:

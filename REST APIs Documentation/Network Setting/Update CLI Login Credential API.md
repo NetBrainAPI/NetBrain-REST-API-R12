@@ -34,7 +34,7 @@ Please be mindful and use after review.
 <br>
 
 
-![CLI_SNMP lock](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.1/raw/main/REST%20APIs%20Documentation/Network%20Setting/NetworkSettingImages/CLISNMP_setting.png)
+![CLI_SNMP lock](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Network%20Setting/NetworkSettingImages/CLISNMP_setting.png)
 
 ## Headers
 

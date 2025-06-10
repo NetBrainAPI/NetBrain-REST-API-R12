@@ -2,7 +2,15 @@
 # Network Setting API Design
 
 ## ***PUT*** /V3/CMDB/NetworkSettings/CLILoginCredential
-Call this API to update CLI Login Credential. <br>
+This API performs a comprehensive update of CLI login credentials across the system by: <br>
+1. Using the specified username as the primary key to locate all matching entries
+2. Identifying related configurations in:
+    * Network Settings -> Telnet/SSH Login Configurations
+    * Shared Device Settings across all associated devices
+3. Executing a global password replacement for all identified entries
+<br><br>
+
+
 Please note that this API is operated on a Domain Admin Privilege. It means that an engineer or guest user does not have the privilege to successfully call this API.
 <br><br>
 <b>Important</b>: Although not common, there may be cases of one username with many different passwords. However, upon calling this API, the username will be updated to have the same password.<br>

@@ -2,13 +2,14 @@
 # One Ip Table API Design
 
 ## ***GET*** /V1/CMDB/Topology/OneIPTable{?Ip}&{?beginIndex}&{?count}
-Calling this API to get the One-IP Table.
+This API is used to get the One-IP Table.
 
-If user provide an input value of "ip" attribute, then this API will return all items which have the same ip address in One-IP Table;
+If user provides an input value of `ip` attribute, then this API will return all items which have the same ip address in One-IP Table;
 
-If user set "IP = null" or " IP = "" " but provide the input values of "beginIndex" and "count", API will return One-IP Table with items number equal to "count" values start from "beginIndex". But notice that the default maximum value of "count" is 1000. So if the input value of "count" greater than 1000, API will only return 1000 itmes. And if start from beginIndex to the end of table, there are no enough count items, API will return the rest of items.
+If user sets `ip = null` or `ip = "" `, but provides the input values of `beginIndex` and `count`, API will return One-IP Table with items number equal to `count` values start from `beginIndex`. <br>
+But note that the default maximum value of `count` is 100,000. So if the input value of `count` is greater than 100,000, API will only return 100,000 itmes. If start from `beginIndex` to the end of table, but there are not enough count items, API will return the rest of items.
 
->**Note:** The One-IP table records the physical connections for all IP addresses in your workspace. It is retrieved during the Layer 2 topology discovery. You can use the One-IP table to troubleshoot any Layer 2 connection issues.
+>**Note:** The One-IP table records the physical connections for all IP addresses in your workspace. It is retrieved during the Layer 2 topology discovery. One-IP table can be used to troubleshoot any Layer 2 connection issues.
 
 ## Detail Information
 
@@ -34,14 +35,14 @@ If user set "IP = null" or " IP = "" " but provide the input values of "beginInd
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-| ip | string  | The ip address of current device.If user provide an input value of "ip" attribute, then this API will return all items which have the same ip address in One-IP Table; |
-|lan|string|The LAN Segment of the IP address.If user provide an input value of “lan” attribute, then this API will return all items which have the same LAN segement in One-IP Table;|
-|mac|string|The MAC address related to the IP address.If user provide an input value of “mac” attribute, then this API will return all items which have the same mac address in One-IP Table;|
-|switch_name|string|The switch name connected to the end system.If user provide an input value of “switch_name” attribute, then this API will return all items which have the same switch name in One-IP Table;|
-|switch_port|string|The [fullname](https://www.netbraintech.com/docs/ie71/help/index.html?interface-name-translation.htm) of switchport to connected to end system or the device interface configured with this IP address. This is not a independent attribute, to use this attribute, 'switch_name' is necessary.|
+| ip | string  | The IP address of the current device. If the user provides an input value of `ip` attribute, then this API will return all items with the same IP address in One-IP Table. |
+|lan|string|The LAN Segment of the IP address. If the user provides an input value of `lan` attribute, then this API will returns all items with the same LAN segement in One-IP Table.|
+|mac|string|The MAC address related to the IP address. If the user provides an input value of `mac` attribute, then this API will return all items with the same MAC address in One-IP Table.|
+|switch_name|string|The switch name connected to the end system. If the user provides an input value of `switch_name` attribute, then this API will return all items with the same switch name in One-IP Table.|
+|switch_port|string|The [fullname](https://www.netbraintech.com/docs/ie71/help/index.html?interface-name-translation.htm) of switchport to connected to the end system or the device interface configured with this IP address. This is not an independent attribute; to use this attribute, `switch_name` is required.|
 |dns|string|The resolved DNS name of the end system, or the combination of the device name and interface name. If the DNS name is not resolved, it is null.|
-| beginIndex* | int  | Begin index of data, API will return OneIP Table items start from "beginIndex". |
-| count* | int  | Count number of returned data, API will return OneIP Table items, the total number of items is the value of "count". Maximum "count" value is 10000. So API will only return 10000 itmes even users set the input value of "count" greater than 10000. If the total number of items which start from "beginIndex" to the end of table are less than "count" value, API will return the rest of items.<br> ***Note:*** If customer insert the beginindex as 1 and count as 10002 which meands the total number will greater than 10000. Then customer would get an error and without any result returned. |
+| beginIndex | int | Beginning index of data; API will return OneIP Table items starting from `beginIndex`. <br>Default: `0` |
+| count | int | Count number of returned data; API will return OneIP Table items with the total number of items as the value of `count`. <br> Maximum: 100,000. <br>API will only return 100,000 itmes even if the input value of `count` is greater than 100,000. If the total number of items which start from `beginIndex` to the end of table is less than `count` value, API will return the rest of items.<br> ***Note:*** If customer inserts the `beginindex` as 1 and `count` as 100,002 (total number will greater than 10000), then API will return an error without any result returned. |
 
 ## Headers
 
@@ -67,25 +68,25 @@ If user set "IP = null" or " IP = "" " but provide the input values of "beginInd
 |<img width=100/>|<img width=100/>|<img width=500/>|
 |OneIPList| list of object | list of OneIP item  |
 |OneIPList.lanSegment| string | IP subnet |
-|OneIPList.ip| string | IP Address |
-|OneIPList.mac| string | Mac Address Of which the IP is on  |
-|OneIPList.devName| string | Device Name Of which the IP is on  |
-|OneIPList.interfaceName| string | Device Interface Name of the IP  |
-|OneIPList.switchName| string | Switch Name that the IP connected to.  |
-|OneIPList.portName| string | Switch Port Name that the IP connected to  |
-|OneIPList.alias| string | device interface is HSRP/GLBP/VRRP |
+|OneIPList.ip| string | IP address |
+|OneIPList.mac| string | MAC address of which the IP is on  |
+|OneIPList.devName| string | Device name of which the IP is on  |
+|OneIPList.interfaceName| string | Device interface name of the IP  |
+|OneIPList.switchName| string | Switch name in which the IP is connected to.  |
+|OneIPList.portName| string | Switch port name in which the IP is connected to  |
+|OneIPList.alias| string | Device interface is HSRP/GLBP/VRRP |
 |OneIPList.dns| string | DNS of the IP  |
-|OneIPList.sourceDevice| string | from which device this One IP come  |
-|OneIPList.serverType| int | device type |
-|OneIPList.switchType| int | switch type |
-|OneIPList.updateTime| DataTime | the update time of the One IP  |
-|OneIPList.userFlag| int | one ip type<br>USERFLAG_AUTO = 0,<br>USERFLAG_MANUAL = 1,<br>OUTSIDE_ANOYMOUS_SOURCE = 2,<br>AUTO_CDPLLDP_TABLE = 5,<br>AUTO_MAC_TABLE = 6,<br>AUTO_ARP_TABLE = 7,<br>AUTO_CDPLLDP_MAC_TABLE = 8,<br>AUTO_DEVICE_INTERFACE = 9,<br>USERFLAG_DRIVER = 10,<br>USERFLAG_VALID_FLAGS_END,<br>USERFLAG_ABNORMAL_FLAGS_START = 0X7FFFFF00,<br>UNSIGNED_USERFLAG = USERFLAG_ABNORMAL_FLAGS_START+1,<br>ERR_USERFLAG ,<br>USERFLAG_ABNORMAL_FLAGS_END,|
+|OneIPList.sourceDevice| string | The source device which this One IP come from |
+|OneIPList.serverType| int | Device Type |
+|OneIPList.switchType| int | Swtich type |
+|OneIPList.updateTime| DataTime | The update time of the One IP  |
+|OneIPList.userFlag| int | one ip type<br><br>USERFLAG_AUTO = 0,<br>USERFLAG_MANUAL = 1,<br>OUTSIDE_ANOYMOUS_SOURCE = 2,<br>AUTO_CDPLLDP_TABLE = 5,<br>AUTO_MAC_TABLE = 6,<br>AUTO_ARP_TABLE = 7,<br>AUTO_CDPLLDP_MAC_TABLE = 8,<br>AUTO_DEVICE_INTERFACE = 9,<br>USERFLAG_DRIVER = 10,<br>USERFLAG_VALID_FLAGS_END,<br>USERFLAG_ABNORMAL_FLAGS_START = 0X7FFFFF00,<br>UNSIGNED_USERFLAG = USERFLAG_ABNORMAL_FLAGS_START+1,<br>ERR_USERFLAG ,<br>USERFLAG_ABNORMAL_FLAGS_END,|
 |OneIPList.source| string | userFlag tos string<br><br> "Auto", //USERFLAG_AUTO<br>"Manual",//USERFLAG_MANUAL<br>"Provide Outside", //OUTSIDE_ANOYMOUS_SOURCE<br>"NDP Table", //AUTO_CDPLLDP_TABLE<br>"MAC Table",//AUTO_MAC_TABLE<br>"ARP Table", //AUTO_ARP_TABLE<br>"NDP & MAC table",//AUTO_CDPLLDP_MAC_TABLE<br>"Device Interface",//AUTO_DEVICE_INTERFACE<br>"Driver"//USERFLAG_DRIVER |
-|OneIPList.vendor| string | device vendor |
-|OneIPList.descr| string | description of the switch port  |
-|OneIPList.vlanId| string | The vlan of the entry is learned on the switch  |
+|OneIPList.vendor| string | Device vendor |
+|OneIPList.descr| string | Description of the switch port  |
+|OneIPList.vlanId| string | The vlan of the entry learned on the switch  |
 |OneIPList.vlanGroup| string | VLAN Group of the device assigned to the same LAN  |
-|time| DataTime | The last update time of the device configuration. |
+|time| DataTime | The time of last update of the device configuration. |
 |statusCode| integer | Code issued by NetBrain server indicating the execution result.  |
 |statusDescription| string | The explanation of the status code. |
 
@@ -175,19 +176,14 @@ curl -X GET \
   -H 'token: fb1e1360-f3c9-4197-929b-886a146d6bdf'
 ```
 
-# Error Example：
-
-
+# Error Examples：
+<!-- ## Error Example 1: Empty Inputs
 ```python
-###################################################################################################################    
-
-"""Error 1: empty inputs"""
-
 Input:
     
         ip = ""
-        count = None # Can not be null.
-        beginIndex = None # Can not be null.
+        count = None # cannot be null.
+        beginIndex = None # cannot be null.
           
 Response:
     
@@ -197,76 +193,58 @@ Response:
     "Get One-Ip Table failed! - 
     {"statusCode":791000,"statusDescription":"Null parameter: the parameter 'Count(int)' cannot be null."}"
 
-###################################################################################################################    
+ -->
 
-"""Error 2: wrong input values type """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Input:
+## Error Example 1: Wrong Input Value Types
+```python
+Input 1:
     
         ip = ""
         count = "100" # Should be integer
         beginIndex = "50" # Should be integer
           
-Response:
-    
-        "{
-            'OneIPList': [...], 
-            'statusCode': 790200,
-            'statusDescription': 'Success.'
-        }"  
-    
-###################################################################################################################    
+Response 1:
 
-"""Error 3: wrong input values type """
+    {'OneIPList': [], 'statusCode': 790200, 'statusDescription': 'Success.'}
 
-Input:
+```
+```python
+Input 2:
     
         ip = "hahahahaah" # There is no Ip address like this
         count = 100 
         beginIndex = 50 
           
-Response:
+Response 2:
     
-        "Get One-Ip Table failed! - 
-            {
-                "statusCode":791001,
-                "statusDescription":"Invalid parameter: the parameter 'IP' is invalid."
-            }"  
+    Get One-Ip Table failed! - {"statusCode":791001,"statusDescription":"Invalid parameter: the parameter 'IP' is invalid."}
     
-###################################################################################################################    
-
-"""Error 4: count > 1000 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+```
+## Error Example 2: `count` > 100,000
+```python
 Input:
     
         ip = "" 
-        count = 10000 # Should be less or equal to 1000
+        count = 1000000 # count must be between 0 to 100,000
         beginIndex = 50 
           
 Response:
     
-        "Get One-Ip Table failed! - 
-            {
-                "statusCode":791002,
-                "statusDescription":"Invalid value"
-            }"  
+    Get One-Ip Table failed! - {"statusCode":791002,"statusDescription":"Count can between 0 and 100000"}
+
     
-###################################################################################################################    
-
-"""Error 5: "beginIndex" > size of One-Ip Table """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+```
+## Error Example 3: `beginIndex` > size of One-Ip Table
+```python
 Input:
     
         ip = "" 
         count = 1 
-        beginIndex = 500 # There are only 117 items in this table.
+        beginIndex = 99999999999 # There are only 117 items in this table.
           
 Response:
     
-            "{
-                'OneIPList': [], 
-                'statusCode': 790200,
-                'statusDescription': 'Success.'
-            }"  
+    Get One-Ip Table failed! - {"statusCode":791009,"statusDescription":"The parameter 'BeginIndex' is invalid value."}
+
     
 ```

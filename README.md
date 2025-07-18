@@ -70,22 +70,23 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 ### [Devices Access Control](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Device%20Access%20Control)
 ***Note:*** If customer want to use the Devices Access Control APIs, please go to the **System Management -> Advanced Settings -> Device Access Policy** then check the "Enable device access policy". <br>
 <img src="REST APIs Documentation/Device Access Control/DeviceAccessImage.JPG" /><br>
-1) [Add Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/AddDeviceAccessPolicy%20API.md)<br>
-2) [Assign Device Access Policies to User API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/AssignDeviceAccessPoliciesToUser%20API.md)<br>
-3) [Delete Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/DeleteDeviceAccessPolicy%20API.md)<br>
+1) [Add Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Add%20Device%20Access%20Policy%20API.md)<br>
+2) [Assign Device Access Policies to User API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Assign%20Device%20Access%20Policies%20To%20User%20API.md)<br>
+3) [Delete Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Delete%20Device%20Access%20Policy%20API.md)<br>
 4) [Get Device Access Policies API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Get%20Device%20Access%20Policies%20API.md)<br>
-5) [Get User Device Access Policis API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/GetUserDeviceAccessPolicy%20API.md)<br>
-6) [Get Users of One Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/GetUsersofDeviceAccessPolicy%20API.md)<br>
-7) [Remove Device Access Policies from User API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/RemoveDeviceAccessPoliciesFromUser%20API.md)<br>
-8) [Set User Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/SetUserDeviceAccessPolicy%20API.md)<br>
-9) [Update Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/UpdateDeviceAccessPolicy%20API.md)<br>
+5) [Get User Device Access Policis API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Get%20User%20Device%20Access%20Policy%20API.md)<br>
+6) [Get User of Device Access Polcy](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Get%20Users%20of%20Device%20Access%20Policy%20API.md)
+7) [Remove Device Access Policies from User API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Remove%20Device%20Access%20Policies%20From%20User%20API.md)<br>
+8) [Set User Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Set%20User%20Device%20Access%20Policy%20API.md)<br>
+9) [Update Device Access Policy API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Access%20Control/Update%20Device%20Access%20Policy%20API.md)<br>
 
 ### [Device Group Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Device%20Group%20Management) 
 1) [Add Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Add%20Device%20Group.md)<br>
 2) [Add Devices to Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Add%20Devices%20to%20Group.md)<br>
 3) [Delete Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Delete%20Device%20Group.md)<br>
 4) [Delete Devices from Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Delete%20Devices%20from%20Group.md)<br>
-5) [Get Devices of Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Devices%20of%20Group.md)<br>
+5) [Get Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Device%20Group%20API.md)
+6) [Get Devices of Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Group%20Management/Get%20Devices%20of%20Group.md)<br>
 
 ### [Device Interfaces Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Device%20Interfaces%20Management) 
 1) [Create Interface Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Device%20Interfaces%20Management/Create%20Interface%20Attribute%20API.md)<br>
@@ -98,17 +99,16 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 1) [Create Devices Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Create%20Devices%20Attribute%20API.md)<br>
 2) [Delete Devices API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Delete%20Devices%20API.md)<br>
 3) [Delete Devices Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Delete%20Devices%20Attribute%20API.md)<br>
-4) [Get Device API Version_1](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20API%20Version_1.md)<br>
+4) [Get Device API Version_1](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Devices%20API%20Version_1.md)<br>
 5) [Get Device API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20API.md)<br>
 6) [Get Device Attributes API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20Attributes%20API.md)<br>
 7) [Get Device Configuration API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20Configuration%20API.md)<br>
 8) [Get Device Raw Data API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20Data%20API.md) <br>
-9) [Get Device Group API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Device%20Group%20API.md)
-10) [Get Front Server of A Device API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Front%20Server%20of%20A%20Device%20API.md)<br>
-11) [Get Group Devices API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Group%20Devices%20API.md)<br>
-12) [Get Connected Switch Ports of an End System API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20the%20connected%20switch%20ports%20of%20an%20end%20system%20API.md)<br>
-13) [Modify NetBrain API Server Credential API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Modify%20NetBrain%20API%20Server%20Credential.md)
-14) [Set Device Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Set%20Device%20Attribute%20API.md)<br>
+9) [Get Front Server of A Device API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Front%20Server%20of%20A%20Device%20API.md)<br>
+10) [Get Group Devices API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20Group%20Devices%20API.md)<br>
+11) [Get Connected Switch Ports of an End System API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Get%20the%20connected%20switch%20ports%20of%20an%20end%20system%20API.md)<br>
+12) [Modify NetBrain API Server Credential API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Modify%20NetBrain%20API%20Server%20Credential.md)
+13) [Set Device Attribute API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Devices%20Management/Set%20Device%20Attribute%20API.md)<br>
 
 
 ### [Discovery Task Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Discovery%20Task%20Management) 
@@ -160,7 +160,7 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 7) [Update Network Settings API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Network%20Setting/Update%20Network%20Settings%20API.md)
 
 ### [Path Browser](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Path%20Browser)
-1) [Get Saved Paths](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Path%20Browser/Get%20Saved%20Paths.md)
+1) [Get Saved Paths](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Path%20Browser/Get%20Saved%20Paths%20API.md)
 
 ### [Path Management](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Path%20Management)
 1) [Calculate Path API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Path%20Management/Calculate%20Path%20API.md)<br>

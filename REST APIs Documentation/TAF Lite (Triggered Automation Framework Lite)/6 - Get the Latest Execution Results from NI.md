@@ -2,7 +2,7 @@
 # Get the Latest Execution Results from NI API Design
 
 ## ***POST*** V3/CMDB/NI/result
-Call this API to get the running status of Trigger Task and running ResultID of NI
+This API is used to obtain the latest execution information.
 
 ## Detail Information
 
@@ -24,10 +24,10 @@ Call this API to get the running status of Trigger Task and running ResultID of 
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
 |||* - required<br />^ - optional|
-|niIdOrPath*|string|NI ID or NI Path |
+|niIdOrPath*|string| ID or path of NI|
 |startTime^|DateTime|Start time of NI execution |
 |endTime^|DateTime|End time of NI execution |
-|output*|array|<table><tr><th>Value</th><th>Enum</th><th>Description</th></tr> <tr><td>0</td><td>all</td><td>All data, except raw data</td></tr> <tr><td>1</td><td>status_code</td><td>Status code and message</td></tr> <tr><td>2</td><td>raw_data</td><td>Raw data</td></tr> <tr><td>3</td><td>csv</td><td>CSV</td></tr> <tr><td>4</td><td>map</td><td>Intent map and external map</td></tr> </table>|
+|output*|array|The result type returned to the third-party system <br><table><tr><th>Value</th><th>Enum</th><th>Description</th></tr> <tr><td>0</td><td>all</td><td>All types of data, except raw data</td></tr> <tr><td>1</td><td>raw_data</td><td>Raw data</td></tr> <tr><td>2</td><td>status_code</td><td>Status code and message</td></tr> <tr><td>3</td><td>csv</td><td>CSV</td></tr> <tr><td>4</td><td>map</td><td>Intent maps and external maps</td></tr> </table>|
 
 > ***Example***
 ```python
@@ -68,12 +68,12 @@ The returned NI execution result content includes Home NI and Follow NI results,
 |[].niName|string|Intent Name|
 |[].niResultId|string|Intent Result ID|
 |[].timePoint|string|NI execution time point|
-|[].statusCodes|list|NI status code|
-|[].csvs|list of objects|NI CSV results|
-|[].rawDatas|list of objects|Command results under device|
+|[].statusCodes|list|NI status codes|
+|[].csvs|list of objects|NI results in CSV format|
+|[].rawDatas|list of objects|Results obtained from executing commands on each device|
 |[].rawDatas[].deviceName|string|Device name|
-|[].rawDatas[].command|string|Name of the command|
-|[].rawDatas[].rawData|string|Information of the command|
+|[].rawDatas[].command|string|Command executed on the device|
+|[].rawDatas[].rawData|string|Raw text data|
 |[].maps|list of objects|Map results executed by NI|
 
 

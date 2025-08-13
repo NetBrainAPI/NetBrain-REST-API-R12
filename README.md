@@ -11,6 +11,8 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 ## New APIs in this version
 1) [Login API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20API.md) (Updated methods) <br>
 2) [Update CLI Login Credential API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Network%20Setting/Update%20CLI%20Login%20Credential%20API.md)
+3) [Data Center Operation APIs](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Data%20Center%20Operation)
+
 
 ## Section 1) Golden Use Case Templates
 1) [Get Path Detail Information by Calling APIs](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/Golden%20Use%20Case%20Templates/Get%20Path%20By%20Calling%20APIs.md)<br>
@@ -66,6 +68,11 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 4) [Update Change Management Scheduled Task API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Change%20Management/Update%20Change%20Management%20Scheduled%20Task%20API.md)<br>
 5) [_Change Management Approval Process API Design - Binding Runbook](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Change%20Management/_Change%20Management%20Approval%20Process%20API%20Design%20--%20Binding%20Runbook.md)<br>
 6) [_Change Management Approval Process API Design - Change State](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Change%20Management/_Change%20Management%20Approval%20Process%20API%20Design%20--%20Change%20state.md)
+
+### [Data Center Operation](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Data%20Center%20Operation)
+1) [Migrate Tenants to New FSC](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Data%20Center%20Operation/Migrate%20Tenants%20to%20New%20FSC.md)
+2) [Switch Data Center Status](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Data%20Center%20Operation/Switch%20Data%20Center%20Status.md)
+3) [Transfer Tenants from One FSC to Another](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Data%20Center%20Operation/Transfer%20Tenants%20from%20One%20FSC%20to%20Another.md)
 
 ### [Devices Access Control](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Device%20Access%20Control)
 ***Note:*** If customer want to use the Devices Access Control APIs, please go to the **System Management -> Advanced Settings -> Device Access Policy** then check the "Enable device access policy". <br>

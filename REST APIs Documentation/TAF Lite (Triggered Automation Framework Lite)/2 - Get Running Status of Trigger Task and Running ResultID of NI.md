@@ -2,7 +2,8 @@
 # Get Running Status of Trigger Task and Running ResultID of NI API Design
 
 ## ***POST*** V3/TAF/Lite/result
-This API is used to retrieve Trigger Intent List and Intent Execution Result ID.
+This API is used to retrieve Trigger Intent List and Intent Execution Result ID. <br>
+PA license is required to use this API.
 
 ## Detail Information
 

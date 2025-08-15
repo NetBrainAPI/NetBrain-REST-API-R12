@@ -3,7 +3,8 @@
 
 ## ***GET*** V3/download?dl_ticket={downloadTicketId}
 When the intent result data from [API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.1/blob/main/REST%20APIs%20Documentation/TAF%20Lite%20(Triggered%20Automation%20Framework%20Lite)/3%20-%20Get%20NI%20running%20results%20of%20Trigger%20Task.md) `API/V3/TAF/Lite/result/datas` is too large to return, a `downloadTicketId` will be returned instead.
-Use `downloadTicketId` in this API `API/V3/download?dl_ticket={downloadTicketId}` to download the result zip file.
+Use `downloadTicketId` in this API `API/V3/download?dl_ticket={downloadTicketId}` to download the result zip file. <br>
+PA license is <b>not</b> required to use this API.
 
 ## Detail Information
 

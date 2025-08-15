@@ -2,7 +2,8 @@
 # Get the Latest Execution Results from NI API Design
 
 ## ***POST*** V3/CMDB/NI/result
-This API is used to obtain the latest execution information.
+This API is used to obtain the latest execution information. <br>
+PA license is <b>not</b> required to use this API.
 
 ## Detail Information
 

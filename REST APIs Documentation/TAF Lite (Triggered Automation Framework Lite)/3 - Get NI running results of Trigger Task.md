@@ -2,7 +2,8 @@
 # Get NI running results of Trigger Task API Design
 
 ## ***POST*** V3/TAF/Lite/result/datas
-This API is used to obtain the list of triggered intents and the execution results.
+This API is used to obtain the list of triggered intents and the execution results. <br>
+PA license is required to use this API.
 
 ## Detail Information
 

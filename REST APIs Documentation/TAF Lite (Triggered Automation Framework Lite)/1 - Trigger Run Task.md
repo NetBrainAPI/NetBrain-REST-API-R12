@@ -2,7 +2,8 @@
 # Trigger Run Task API Design
 
 ## ***POST*** V3/TAF/Lite/run
-This API is used to Trigger Intent Execution (run task).
+This API is used to Trigger Intent Execution (run task). <br>
+PA license is required to use this API.
 
 ## Detail Information
 

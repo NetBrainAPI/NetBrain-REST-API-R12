@@ -2,7 +2,8 @@
 # Get ADT Data API Design
 
 ## ***POST*** V3/TAF/Lite/adt/data
-This API is used for retrieving ADT data.
+This API is used for retrieving ADT data. <br>
+PA license is required to use this API.
 
 ## Detail Information
 

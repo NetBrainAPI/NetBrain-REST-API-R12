@@ -2,7 +2,7 @@
 # Discovery API Design
 
 ## ***POST*** /V1/CMDB/Discovery/Tasks/{task}/Seeds
-Call this API to add a list of target ip addresses as seeds to an EXISTING scheduled discovery task along with optional cli information for each ip.
+Call this API to add a list of target ip addresses as seeds to an <b>existing</b> scheduled discovery task along with optional cli information for each ip.
 > **Note**: {task} means {taskId} or {taskName}
 
 ## Detail Information
@@ -25,16 +25,17 @@ Call this API to add a list of target ip addresses as seeds to an EXISTING sched
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
+|||* - required|
 |seeds* | list  | The list of IP entries for devices. |
 |seeds.mgmtIP* | string  | The management IP address of a device.  |
-|seeds.cliType | integer  | The access method to the device. When it is null, the SNMP method will be used. <br> 0: Telnet <br> 1: SSH|
+|seeds.cliType | integer  | The access method to the device. When it is null, the SNMP method will be used. <br> `0`: Telnet <br> `1`: SSH|
 |seeds.username | string  | Specify the username to access the devices.   |
 |seeds.password | string  | Specify the password to access the devices.  |
 |seeds.privilegeUsername | string  | Specify the username to enter the privilege mode of the devices. |
 |seeds.privilegePassword | string  | Specify the password to enter the privilege mode of the devices.  |
 |seeds.designatedCredentials | bool  | Determine whether the API only uses the credentials you have specified. If false, the API will use credentials in network settings.  |
 |seeds.snmpCommunityString | string  | The SNMP community of the devices. |
-|seeds.frontServerOrGroupAlias | string  | Specify the NetBrain front server or front server group to access live network by alias .   |
+|seeds.alias | string  | Specify the NetBrain front server or front server group to access live network by alias.   |
 
 > ***Example***
 
@@ -52,7 +53,7 @@ Call this API to add a list of target ip addresses as seeds to an EXISTING sched
       "privilegePassword": "string",
       "designatedCredentials": true,
       "snmpCommunityString": "string",
-      "frontServerOrGroupAlias": "string"
+      "alias": "string"
     }
   ]
 }
@@ -103,7 +104,7 @@ Call this API to add a list of target ip addresses as seeds to an EXISTING sched
 ```
 
 # Full Example:
-
+## Example 1
 
 ```python
 # import python modules 
@@ -153,19 +154,60 @@ try:
         result = response.json()
         print (result)
     else:
-        print("IP Add Failed - " + str(response.text))
+        print("Failed to Add Seed IP(s) to Discovery Task - " + str(response.text))
     
 except Exception as e:
     print (str(e)) 
-
+```
+```python
+    { "statusCode": 790200, "statusDescription": "Success." }
 ```
 
-    { "statusCode": 790200, "statusDescription": "Success." }
+## Example 2
+```python
+# taskID = "34124e63-31d6-dfad-f5fa-05ae0ebb4b49"
+##OR##
+taskName = "APItest"
+
+body={
+  "seeds": [
+    {
+      "mgmtIP": "10.1.13.2",
+      "cliType": 0,
+      "userName": "NetBrain",
+      "password": "NetBrain",
+      "privilegeUsername": "string",
+      "privilegePassword": "string",
+      "designatedCredentials": True,
+      "snmpCommunityString": "string",
+      "alias": "FS-3129"
+    }
+  ]
+}
+ 
+headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+headers["Token"]=token
+full_url= nb_url + "/ServicesAPI/API/V1/CMDB/Discovery/Tasks/"+str(taskName)+"/Seeds"
+
+try:
+    # Do the HTTP request
+    response = requests.post(full_url, data = json.dumps(body), headers=headers, verify=False)
+    # Check for HTTP codes other than 200
+    if response.status_code == 200:
+        # Decode the JSON response into a dictionary and use the data
+        result = response.json()
+        print (result)
+    else:
+        print("Failed to Add Seed IP(s) to Discovery Task - " + str(response.text))
     
+except Exception as e:
+    print (str(e)) 
+```
+```python
+    {'statusCode': 790200, 'statusDescription': 'Success.'}
+```
 
  # cURL Code from Postman
-
-
 ```python
 curl -X POST \
   http://193.168.28.79/ServicesAPI/API/V1/CMDB/Discovery/Tasks/34124e63-31d6-dfad-f5fa-05ae0ebb4b49/Seeds \
@@ -186,71 +228,55 @@ curl -X POST \
 ```
 
 # Error Examples:
-
-
+## Example 1: Empty `taskID`
 ```python
-###################################################################################################################    
-
-"""Error 1: empty taskID"""
-
 Input:
-    
-        mgmIP1 = "10.1.13.2"
-        mgmIP2 = "123.1.1.1"
-        mgmIP3 = "10.1.14.2"
-        mgmIP4 = "123.203.3.3"
-        mgmIP5 = "123.204.4.4"
-        mgmIP6 = "123.20.1.3"
+        mgmtIP1 = "10.1.13.2"
+        mgmtIP2 = "123.1.1.1"
+        mgmtIP3 = "10.1.14.2"
+        mgmtIP4 = "123.203.3.3"
+        mgmtIP5 = "123.204.4.4"
+        mgmtIP6 = "123.20.1.3"
         taskID = ""
 
 Response:
-    
-    "IP Add Failed - 
+    "Failed to Add Seed IP(s) to Discovery Task - 
         {
             "statusCode":793404,
             "statusDescription":"No resource"
         }"
-
-###################################################################################################################    
-
-"""Error 2: empty mgmIPs list"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+```
+## Example 2: Empty `mgmtIP` list
+```python
 Input:
-    
-        mgmIP1 = ""
-        mgmIP2 = ""
-        mgmIP3 = ""
-        mgmIP4 = ""
-        mgmIP5 = ""
-        mgmIP6 = ""
+        mgmtIP1 = ""
+        mgmtIP2 = ""
+        mgmtIP3 = ""
+        mgmtIP4 = ""
+        mgmtIP5 = ""
+        mgmtIP6 = ""
         taskID = "34124e63-31d6-dfad-f5fa-05ae0ebb4b49"
 
 Response:
-    
     "{
         'statusCode': 790200, 
         'statusDescription': 'Success.'
     }"
-
-###################################################################################################################   
-
-"""Error 2: wrong ip addresses"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+```
+## Example 3: Wrong IP addresses
+```python
 Input:
-    
         mgmIP1 = "10.1.13.2"
         mgmIP2 = "123.1.1.1"
         mgmIP3 = "10.1.14.2"
-        mgmIP4 = "123.203.3.200"# no such device exist
-        mgmIP5 = "123.204.4.200"# no such device exist
-        mgmIP6 = "123.20.1.200"# no such device exist
+        mgmIP4 = "123.203.3.200" # no such device exists
+        mgmIP5 = "123.204.4.200" # no such device exists
+        mgmIP6 = "123.20.1.200" # no such device exists
         taskID = "34124e63-31d6-dfad-f5fa-05ae0ebb4b49"
 
 Response:
-    
     "{
         'statusCode': 790200, 
         'statusDescription': 'Success.'
     }"
-
 ```

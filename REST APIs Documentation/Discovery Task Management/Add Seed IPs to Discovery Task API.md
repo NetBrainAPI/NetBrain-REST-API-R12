@@ -53,7 +53,7 @@ Call this API to add a list of target ip addresses as seeds to an <b>existing</b
       "privilegePassword": "string",
       "designatedCredentials": true,
       "snmpCommunityString": "string",
-      "alias": "string"
+      "frontServerOrGroupAlias": "string"
     }
   ]
 }

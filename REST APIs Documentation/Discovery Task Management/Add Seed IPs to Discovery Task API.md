@@ -35,7 +35,7 @@ Call this API to add a list of target ip addresses as seeds to an <b>existing</b
 |seeds.privilegePassword | string  | Specify the password to enter the privilege mode of the devices.  |
 |seeds.designatedCredentials | bool  | Determine whether the API only uses the credentials you have specified. If false, the API will use credentials in network settings.  |
 |seeds.snmpCommunityString | string  | The SNMP community of the devices. |
-|seeds.alias | string  | Specify the NetBrain front server or front server group to access live network by alias.   |
+|seeds.frontServerOrGroupAlias | string  | Specify the NetBrain front server or front server group to access live network by alias. <br> Currently, this value can be retrieved from `alias` value from DB > NGSystem.FrontServerAndGroup, or via `Front Server Hostname` from Sytem Management > Front Server Controllers.   |
 
 > ***Example***
 
@@ -174,13 +174,13 @@ body={
     {
       "mgmtIP": "10.1.13.2",
       "cliType": 0,
-      "userName": "NetBrain",
-      "password": "NetBrain",
-      "privilegeUsername": "string",
-      "privilegePassword": "string",
+      "userName": "username",
+      "password": "password",
+      "privilegeUsername": "user",
+      "privilegePassword": "pwd",
       "designatedCredentials": True,
       "snmpCommunityString": "string",
-      "alias": "FS-3129"
+      "frontServerOrGroupAlias": "BURWPLTG1021"
     }
   ]
 }

@@ -88,7 +88,7 @@ try:
         result = response.json()
         print (result)
     else:
-        print ("Get modules failed! - " + str(response.text))
+        print ("Failed to Update Device Count in Network Setting! - " + str(response.text))
     
 except Exception as e:
     print (str(e)) 

@@ -225,7 +225,7 @@ try:
         result = response.json()
         print (result)
     else:
-        print ("Network settings added Failed! - " + str(response.text))
+        print ("Failed to Add Network Settings! - " + str(response.text))
 
 except Exception as e:
     print (str(e)) 

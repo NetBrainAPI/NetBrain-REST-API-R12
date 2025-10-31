@@ -31,7 +31,7 @@ Please be mindful and use after review.
 |<img width=100/>|<img width=100/>|<img width=500/>|
 |Bearer Authentication| Headers | Authentication token | 
 
-## Parameters 
+## Request body(****required***)
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
@@ -42,7 +42,7 @@ Please be mindful and use after review.
 <br>
 
 
-![CLI_SNMP lock](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Network%20Setting/NetworkSettingImages/CLISNMP_setting.png)
+![CLI_SNMP lock](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.1/raw/main/REST%20APIs%20Documentation/Network%20Setting/NetworkSettingImages/CLISNMP_setting.png)
 
 ## Headers
 

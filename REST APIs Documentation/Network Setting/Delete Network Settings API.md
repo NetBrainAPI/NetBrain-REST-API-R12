@@ -129,7 +129,7 @@ try:
         result = response.json()
         print (result)
     else:
-        print ("Network settings deleted Failed! - " + str(response.text))
+        print ("Failed to Delete Network Settings! - " + str(response.text))
 
 except Exception as e:
     print (str(e)) 
@@ -209,13 +209,13 @@ curl -X DELETE \
 
 ```python
 
-Network settings deleted Failed! - 
+Failed to Delete Network settings! - 
 {"statusCode":791000,"statusDescription":"Null parameter: the parameter 'privateKey alias' cannot be null."}
 
-Network settings deleted Failed! - 
+Failed to Delete Network settings! - 
 {"statusCode":791000,"statusDescription":"Null parameter: the parameter 'jumpBox alias' cannot be null."}
 
-Network settings deleted Failed! - 
+Failed to Delete Network settings! - 
 {"statusCode":791000,"statusDescription":"Null parameter: the parameter 'telnetInfo alias' cannot be null."}
 
 ```

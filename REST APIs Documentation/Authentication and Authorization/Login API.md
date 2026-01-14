@@ -297,5 +297,40 @@ Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/hel
 2. Copy the `Client ID` and `Client Secret`.<br>
 ![OAuth ID Secret](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_OAuth_clientID_clientSecret.png)
 3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. <br>
+* via Postman
 ![OAuth Get Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/3_OAuth_get_token.png)
+* via script
+    ```python
+    import requests
+    import json
+    import time
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    import pprint
+
+    nb_url = 'https://netbrain.com/'
+    headers = {'Content-Type': 'application/json', 'Accept': 'application/json'} 
+
+    def getOauth():
+        full_url = nb_url + "ServicesAPI/auth/oauth2/token"
+        body = {
+            "grant_type":"client_credentials",
+            "client_id":"uqj3vbos-tp6ma9me",
+            "client_secret":"cXxOIQxvfDOyJcbMcouAoMMNVI7gZJHQ"
+        }
+        try:
+            response = requests.post(full_url, headers=headers, data=body, verify=False)
+            if response.status_code == 200:
+                r0 = response.json()
+                print(r0)
+            else:
+                print(f"Get Oauth failed: ", str(response.text))
+        except Exception as e:
+            print(str(e))
+    getOauth()
+    ```
+    ```python
+    {'access_token': 'eyJhbGciOiJIUzUxMiIsImtpZCI6IklEIiwidHlwIjoiSldUIn0.eyJTRVNTSU9OX0lEIjoiNzllMMjM5MGUxIiwiVVNFUl9JRCI6ImQ0MGM1MGM2LTdkYzAtNGJkYS04MzM4LTE5OGUyYjFkMDFjMSIsIlVTRVJfTkFNRSI6Im1pY2giLCJDTElFTlRfQVBQIjoidXFqM3Zib3MtdHA2bWE5bJDbGllbnRBcHAiLCJSRUFMTV9JRCI6IiIsIlJFQUxNX0FMSUFTIjoiTmV0QnJhaW4iLCJDTEFJTVMuc2NvcGUiOiJvcGVuYXBpIiwiQ0xBSU1TLmdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJDTEFJTVMuYXV0aF90eXBlIjoiT0F1dGgiLCJDTEFJTVMuY2xpZW50X2lkIjoidXFqM3Zib3MtdHA2bWE5bWUiLCJuYmYiOjE3NjgzOTI4MTYsImV4cCI6MTc2ODM5NjQxNiwiaWF0IjoxNzY4MzkyODE2LCJpc3MiOiJuZXRicmFpbiIsImF1ZCI6ImllIn0.vmHZCeWlKn45p6HpcZ0qxFA01u2aJgPgeaokDjfVYM6CQ', 'token_type': 'bearer', 'expires_in': 3599}
+
+    ```
 4. Get the token value from the API response data, and set it to `Headers['Token']`<br>

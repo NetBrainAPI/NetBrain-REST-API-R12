@@ -1,12 +1,12 @@
 
-# Get file list API
+# File Download API Design
 
 ## ***POST*** /V1/CMDB/Files/
-This function returns a list of files contained in a specified folder.
+This API is used to Get All List of Files.
 
 ## Detail Information
 
-> **Title** : Get file list API<br>
+> **Title** : Get All File List API<br>
 
 > **Version** : 03/11/2019.
 
@@ -22,8 +22,8 @@ This function returns a list of files contained in a specified folder.
 ## Request body(****required***)
 |**Name**|**Type**|**Description**|
 |------|------|------|
-| folderId | string  | The ID of the folder from which you want to get the files. Root folder (public folder) will be returned if folderId is null. |
-| fileTypes* | array  | The file types you want to retrieve. There are three file types:<br> ▪ 0: Folder<br> ▪ 11: Map<br> ▪ 21: Dashboard |
+| folderId | string  | ID of the folder from which you want to get the files.<br> Root folder (public folder) will be returned if folderId is null. |
+| fileTypes* | array  | Types of file to retrieve. <br> ▪ `0`: Folder<br> ▪ `11`: Map<br> ▪ `21`: Dashboard ▪ `999` - Windows files |
 
 > ***Example:***
 
@@ -31,12 +31,12 @@ This function returns a list of files contained in a specified folder.
 ```python
 { 
     "folderId": "", 
-    "fileTypes": [ 0, 11 ,21] 
+    "fileTypes": [0, 11 ,21] 
 }
 ```
 
 
-## Path Parameters(****required***)
+## Parameters(****required***)
 
 > No parameters required.
 
@@ -62,11 +62,11 @@ This function returns a list of files contained in a specified folder.
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|items| array | A list of folders and files.  |
+|items| array of object | List of folders and files. |
 |id| string | The ID of a folder in the file tree. |
-|name| string | The name of a file. |
-|originalId| string | The ID of a specific dashboard or file. (Used for Map or Dashboard type only.) |
-|type | integer | The file types you want to retrieve. There are three file types:<br> ▪ 0: Folder<br> ▪ 11: Map<br> ▪ 21: Dashboard |
+|name| string | Name of a file. |
+|originalId| string | The ID of a specific dashboard or file. <br> It is used for Map or Dashboard type only. |
+|type | integer | Retrieved file types. <br> ▪ `0`: Folder<br> ▪ `11`: Map<br> ▪ `21`: Dashboard<br> ▪ `999` - Windows files |
 |statusCode| integer | Code issued by NetBrain server indicating the execution result.  |
 |statusDescription| string | The explanation of the status code. |
 
@@ -101,8 +101,6 @@ This function returns a list of files contained in a specified folder.
 ```
 
 # Full Example:
-
-
 ```python
 # import python modules 
 import requests
@@ -114,44 +112,69 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Set the request inputs
 token = "cdba9af6-1f4d-45d0-8933-7ee38c3223b1"
-nb_url = "http://192.168.28.79"
-
 full_url= nb_url + "/ServicesAPI/API/V1/CMDB/Files/"
 headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 headers["Token"]=token
 
 body = { 
     "folderId": "", 
-    "fileTypes": [ 0, 11 ,21] 
+    "fileTypes": [0, 11 ,21] 
 }
 
 try:
     response = requests.post(full_url, headers = headers, data = json.dumps(body), verify = False)
-        #response = requests.delete(full_url, headers = headers, verify = False)
     if response.status_code == 200:
         result = response.json()
         print (result)
     else:
-        print ("Get Files List Failed! - " + str(response.text))
+        print ("Failed to Get All File List! - " + str(response.text))
 except Exception as e:
     print (str(e))
 ```
-
-    {'items': [{'originalId': 'cf23253b-963e-a6e9-be56-d1bc75ea862c', 'id': 'bbf22db2-6a35-48c8-b3b0-537aac641295', 'name': 'Desktop/Map1', 'type': 11}, {'originalId': '3379471c-1c06-19af-b030-8dc82245a7f1', 'id': '7a4cece9-7565-44e9-986e-d4f285a14cb3', 'name': 'Desktop/Map2', 'type': 11}], 'statusCode': 790200, 'statusDescription': 'Success.'}
-    
+```python
+{
+  "items": [
+    {
+      "id": "eda5e839-067d-485b-b4c0-a493281c1b43",
+      "name": "Public/OpenTopo",
+      "type": 0
+    },
+    {
+      "id": "3db78383-8eeb-45b0-937e-9ea2986a5f50",
+      "name": "Public/test",
+      "type": 0
+    },
+    {
+      "id": "911d31ec-a35b-4238-8d29-315fea952c73",
+      "name": "Public/OpenTopo/Input",
+      "type": 0
+    },
+    {
+      "id": "46d5b216-355c-4dba-97e9-358daf92d7b5",
+      "name": "Public/OpenTopo/Output",
+      "type": 0
+    },
+    {
+      "originalId": "10b2ae17-b02a-4340-b843-465e018db82a",
+      "id": "078cb2a9-c4e8-41b8-acb6-2af1c339af4d",
+      "name": "Public/test/Map3 (1) (1)",
+      "type": 11
+    }
+  ],
+  "statusCode": 790200,
+  "statusDescription": "Success."
+}
+```
 
 # cURL Code from Postman
-
-
 ```python
 curl -X POST \
-  http://192.168.28.79/ServicesAPI/API/V1/CMDB/Files/ \
+  http://192.168.28.44/ServicesAPI/API/V1/CMDB/Files/ \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: f8137d46-98cd-42aa-9aa1-f660b68d872e' \
   -H 'cache-control: no-cache' \
-  -H 'token: cdba9af6-1f4d-45d0-8933-7ee38c3223b1' \
+  -H 'token: 6feda8f4-7a92-4e83-9703-40ac18484b5b' \
   -d '{ 
-        "folderId": "", 
-        "fileTypes": [ 0, 11 ,21] 
-    }'
+    "folderId": "", 
+    "fileTypes": [0, 11 ,21] 
+}'
 ```

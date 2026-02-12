@@ -5,12 +5,21 @@
 
 This API is used to get devices and their attributes data in batch. The response of this API returns a list in JSON format.<br><br>**Note:<br>1. The API follows the privilege control of NB system. If there is restriction set by Access Control Policy for the target querying resources, the response will not return queried data.<br>2. This API doesn't support any GDR that is not set as displayed, except first discovery time and last discovery time.**<br><br>
 <b>Important</b>: It is recommended to pass parameter <i>version=1</i> instead of <i>version=0</i>
+<br><br>
+
+### Version interaction between URL and request body
+Starting from R12, the multi-version API support was introduced; the <i>URL query parameter version `V`</i> specified in the URL (e.g. API/<b>V1</b>/CMDB/Devices) represents the NetBrain API version, and also controls the <b>shape of the response payload</b>.
+<br>
+If <i>the request body parameter `version`</i> is <b>not</b> provided, the API version in the URL (e.g. V1, V2, V3) takes precedence and determines the fields of the response by using the latest version logic. <br>
+If <i>the request body parameter `version`</i> <b>is</b> provided, <i>the request body parameter `version`</i> takes precedence when selecting the response format. <br>
+&nbsp; When version=0 is used, it uses the old version logic. <br><br>
+As a result, calling this API with the request parameter <i>`version`</i> specified or not can produce different response fields.
 
 ## Detail Information
 
 >**Title:** Get Devices API
 
->**Version:** 02/28/2023
+>**Version:** 02/12/2026
 
 >**API Server URL:** http(s)://IP Address of NetBrain Web API Server/ServicesAPI/API/V1/CMDB/Devices
 
@@ -34,11 +43,12 @@ This API is used to get devices and their attributes data in batch. The response
 |ip|string OR list of string|A list of device management IPs|
 |||If provided with both of `hostname` and `ip`, `hostname` has higher priority. If any of the devices are not found from the provided query parameter, API returns the found devices as a list in response and add another json key `deviceNotFound`, the value is a mixed list of hostnames and IPs that are not found.|
 |*fullattr|integer|`0` (default) - return basic device attributes (device id, management IP, hostname, device type, first discovery time, last discovery time).<br>`1` - return all device attributes, including customized attributes|
-|*version|string| `0` (default) - returns basic device attributes (device id, mgmt ip, hostname, device type, first discovery time, last discovery time) <br> `1` - returns all device properties.<br> It is recommended to pass version=1.|
+|version|string| `0` - uses old version logic to return basic device attributes.<br> `1`(default) - uses newest version logic to return all device properties.<br> It is recommended to pass version=1.|
+|||Starting from R12, the multi-version API support was introduced; the <i>URL query parameter version `V`</i> specified in the URL (e.g. API/<b>V1</b>/CMDB/Devices) represents the NetBrain API version, and also controls the <b>shape of the response payload</b>.<br>If <i>the request body parameter `version`</i> is <b>not</b> provided, the API version in the URL (e.g. V1, V2, V3) takes precedence and determines the fields of the response by using the latest version logic. <br>If <i>the request body parameter `version`</i> <b>is</b> provided, <i>the request body parameter `version`</i> takes precedence when selecting the response format. <br>&nbsp; When version=0 is used, it uses the old version logic. <br><br>As a result, calling this API with the request parameter <i>`version`</i> specified or not can produce different response fields.|
 |skip|integer|The amount of records to be skipped. <br>The value cannot be negative.  <br>If the value is negative, API throws exception `{"statusCode":791001,"statusDescription":"Parameter 'skip' cannot be negative"}`. <br>No upper bound for this parameter.|
 |limit|integer|The up limit amount of device records to return per API call. <br>The value cannot be negative. <br>If the value is negative, API throws exception `{"statusCode":791001,"statusDescription":"Parameter 'limit' cannot be negative"}`. <br>No upper bound for this parameter. If the parameter is not specified in API call, it means there is not limitation setting on the call.|
 |||If only `skip` value is provided, returns the device list with 50 devices information start from the skip number. <br>If only `limit` value is provided, returns from the first device in DB. <br>If both `skip` and `limit` values are provided, returns as required. <br>Error exceptions follows each parameter's description.<br>`Skip` and `limit` parameters are based on the search result from DB. The `limit` value's valid range is 10 - 100; if the assigned value exceeds the range, the server will respond with an error message: `Parameter 'limit' must be greater than or equal to 10 and less than or equal to 100.`  |
-|filter|json|If specified, returns the matched device list with device attributes. <br>Supported filtering attributes: `name`, `assetTag`, `contact`, `descr`, `layer`, `loc`, `mgmtIP`, `model`, `site` (complete site path; e.g. `"My Network\\\Burlington"`), `sn`, `subTypeName`, `vendor`, `ver`, `hasBGPConfig`, `hasOSPFConfig`, `hasEIGRPConfig`, `hasISISConfig`, `hasMulticastConfig`, `hasOTVConfig`, `isHA`, `hasBPEConfig`, `isTransparent`, `isCluster`, `hasVXLANConfig`, `hasVPLSConfig`, `alias` (the alias name of device Telnet/SSH settings)|
+|filter|json|If specified, returns the matched device list with device attributes. <br>All single GDR Property including customized ones can be used (except geolocation) <br><br>Note:<br>• `site`: please use the complete site path; e.g. `"My Network\\\Burlington"`<br>• `alias`: refers to the alias name of device Telnet/SSH settings|
 |||Only supports AND operator, when multiple filter attributes are specified in JSON.<br>If provided with invalid data format, returns error `invalid filter input`.|
 
 ## Headers
@@ -57,19 +67,19 @@ This API is used to get devices and their attributes data in batch. The response
 |token|string|Authentication token, get from login API.|
 
 ## Response
-** Note that the response will differ based on the parameter. 
+** Note that the response will differ based on the parameter. Please refer to the below examples to see the different formats of responses.
 
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |devices|string[]|A list of devices.|
 |devices.id|string|The device ID.|
 |devices.mgmtIP|string|The management IP address of the returned device.|
-|devices.hostname|string|The hostname of returned device.|
-|devices.deviceTypeName|string|The type of the returned device; e.g. Cisco Router|
+|devices.name|string|The hostname of returned device.|
+|devices.subTypeName|string|The type of the returned device; e.g. Cisco Router|
+|devices.fDiscoveryTime|time|First discovery time of device.|
+|devices.DiscoveryTime|time|Last discovery time of device.|
 |devices.customAttribute1|Refer to GDR data type|Customized Attribute 1.|
 |devices.customAttribute2|Refer to GDR data type|Customized Attribute 2.|
-|devices.firstDiscoverTime|time|First discovery time of device.|
-|devices.lastDiscoverTime|time|Last discovery time of device.|
 |...|...|...|
 |statusCode|integer|Code issued by NetBrain server indicating the execution result.|
 |statusDescription|string|The explanation of the status code.|
@@ -520,6 +530,49 @@ except Exception as e:
 }
 ```
 
+# Example 6: Using `filter` with customized GDR
+Via <b> Tenant Management > GDR Data Configuration</b>, create the customized GDR: `mgmtHostname`
+
+```python
+full_url = nb_url + "/ServicesAPI/API/V1/CMDB/Devices"
+headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+headers["Token"]=token
+
+filter1 = {
+    "mgmtHostname":"mgmt123", #customized GDR property
+    "name":"AWS-CSR10v"
+}
+
+query = {
+    'filter': json.dumps(filter1),
+    'version':1
+}
+try:
+    response = requests.get(full_url, headers=headers, params = query, verify=False)
+    if response.status_code == 200:
+        result = response.json()
+        print (result)
+    else:
+        print("Get Devices failed! - " + str(response.text))
+except Exception as e:
+    print (str(e)) 
+```
+```python
+{
+  "devices": [
+    {
+      "id": "020e0271-e336-4e41-891d-e6a3a029e2d0",
+      "mgmtIP": "18.223.162.2",
+      "name": "AWS-CSR10v",
+      "subTypeName": "Cisco Router",
+      "fDiscoveryTime": "2026-02-09T20:15:26Z",
+      "lDiscoveryTime": "2026-02-10T18:57:21Z"
+    }
+  ],
+  "statusCode": 790200,
+  "statusDescription": "Success."
+}
+```
 
 # cURL Code from Postman:
 This cURL command is based on Example 1

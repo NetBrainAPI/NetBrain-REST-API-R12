@@ -23,7 +23,7 @@ This API is used to Get All List of Files.
 |**Name**|**Type**|**Description**|
 |------|------|------|
 | folderId | string  | ID of the folder from which you want to get the files.<br> Root folder (public folder) will be returned if folderId is null. |
-| fileTypes* | array  | Types of file to retrieve. <br> ▪ `0`: Folder<br> ▪ `11`: Map<br> ▪ `21`: Dashboard ▪ `999` - Windows files |
+| fileTypes* | array  | Types of file to retrieve. <br> ▪ `0`: Folder<br> ▪ `11`: Map<br> ▪ `21`: Dashboard<br> ▪ `999` - Windows files |
 
 > ***Example:***
 

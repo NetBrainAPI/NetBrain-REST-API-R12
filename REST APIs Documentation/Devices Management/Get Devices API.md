@@ -77,7 +77,7 @@ As a result, calling this API with the request parameter <i>`version`</i> specif
 |devices.name|string|The hostname of returned device.|
 |devices.subTypeName|string|The type of the returned device; e.g. Cisco Router|
 |devices.fDiscoveryTime|time|First discovery time of device.|
-|devices.DiscoveryTime|time|Last discovery time of device.|
+|devices.lDiscoveryTime|time|Last discovery time of device.|
 |devices.customAttribute1|Refer to GDR data type|Customized Attribute 1.|
 |devices.customAttribute2|Refer to GDR data type|Customized Attribute 2.|
 |...|...|...|

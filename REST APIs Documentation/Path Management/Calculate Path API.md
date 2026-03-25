@@ -2,7 +2,8 @@
 # Path API Design
 
 ## ***POST*** /V1/CMDB/Path/Calculation
-Call this API to calculate the path from endpoint A (source) to endpoint B (destination). It returns the result of the calculated path in the form of a path ID (a string), and you can use the path ID in the GetPath API as the input parameter to get each hop information of the path.
+Call this API to calculate the path from endpoint A (source) to endpoint B (destination). <br> 
+It returns the result of the calculated path in the form of a path ID (a string), which can be used as the input parameter to get each hop information of the path via [Get Path Calculation Result API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.3/blob/main/REST%20APIs%20Documentation/Path%20Management/Get%20Path%20Calculation%20Result%20API.md) or [Get Path Calculation Overview API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.3/blob/main/REST%20APIs%20Documentation/Path%20Management/Get%20Path%20Calculation%20Overview%20API.md).
 
 ## Detail Information
 
@@ -27,22 +28,22 @@ Call this API to calculate the path from endpoint A (source) to endpoint B (dest
 |sourceIP* | string  | Input the IP address of the source device.  |
 |sourcePort | integer  | Specify the source protocol port If TCP/UDP is selected such as 23 for telnet. This parameter can be null.  |
 |sourceGateway* | Object  | Source gateway resolve result, end user **MUST** use gateway resolve result.  |
-|sourceGateway.type* | string | Result rely on Step 1, customer don't need to consider.|
+|sourceGateway.type* | string | Result relies on Step 1, can be disregarded for customer.|
 |sourceGateway.gatewayName* | string  | The name of the gateway. Result from Step 1.  |
-|gatewayList.payload*| dict | Internal data structure, customer don't need to considered.  |
-|destIP* | string  | Input the IP address of the destination device.  |
+|gatewayList.payload*| dict | Internal data structure, can be disregarded for customer.  |
+|destIP* | string  | Input IP address of the destination device.  |
 |destPort* | integer  | Specify the destination protocol port If TCP/UDP is selected, such as 23 for telnet. This parameter can be null.  |
 |protocol* | integer  | Specify the application protocol. see list_of_ip_protocol_numbers, such as 4 for IPv4.  |
-|isLive* | bool  | ▪ False - Use data From current Baseline<br>▪ True - Use data via live access |
-|advanced |object	|advance setting.|
+|isLive* | bool  | ▪ `False` - Use data From current Baseline<br>▪ `True` - Use data via live access |
+|advanced |object |advance setting.|
 |advanced.debugMode | bool	|The debug mode of trigger API.|
-|advanced.calcWhenDeniedByACL| bool	| Whether to keep calculate when the process been denied by ACL.|
-|advanced.calcWhenDeniedByPolicy |bool	|Whether to keep calculate when the process been denied by policy.|
-|advanced.calcL3ActivePath| bool	|Whether to calculate L3 active path.|
-|advanced.useCommandsWithArguments| bool	|Whether to use the commands with arguments inside.|
-|advanced.enablePathFixup	|bool	|Whether to enable the path fixup feature.|
-|routingScheme	|integer	|Scheme for routing process and with two values 0 and 1 can be selected. 0 means UNICAST, 1 means MULTICAST.|
-|group	|string	|Group name for Unicast calculation. (The group must has value when the routing scheme is 0).|
+|advanced.calcWhenDeniedByACL| bool | Whether to keep calculate when the process been denied by ACL.|
+|advanced.calcWhenDeniedByPolicy |bool |Whether to keep calculate when the process been denied by policy.|
+|advanced.calcL3ActivePath| bool |Whether to calculate L3 active path.|
+|advanced.useCommandsWithArguments| bool |Whether to use the commands with arguments inside.|
+|advanced.enablePathFixup |bool |Whether to enable the path fixup feature.|
+|routingScheme |integer |Scheme for routing process and with two values 0 and 1 can be selected. 0 - `UNICAST`, 1 - `MULTICAST`.|
+|group |string |Group name for Unicast calculation. (The group must have value when the routing scheme is 0).|
 
 ## Parameters(****required***)
 
@@ -63,20 +64,18 @@ Call this API to calculate the path from endpoint A (source) to endpoint B (dest
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-| token | string  | Authentication token, get from login API. |
+| token | string  | Authentication token, retrieved from Login API. |
 
 ## Response
 
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|taskID| string | The task ID of the calculated path. You can call the hop information of the path with the taskID in the GetPath API. |
+|taskID| string | The task ID of the calculated path. <br> Use this as `taskID` input parameter in Get Path Calculation Result API or Get Path Calculation Overview API to get the hop information of the path. |
 |statusCode| integer | The returned status code of executing the API.  |
 |statusDescription| string | The explanation of the status code.  |
 
 > ***Example***
-
-
 ```python
 {
     'taskID': 'b0bae173-af8c-418b-8dc4-1ffdb0e897fa',
@@ -86,8 +85,6 @@ Call this API to calculate the path from endpoint A (source) to endpoint B (dest
 ```
 
 # Full Example:
-
-
 ```python
 Calculate_Path_url = nb_url + "/ServicesAPI/API/V1/CMDB/Path/Calculation"
 
@@ -127,7 +124,7 @@ def calculate_path(Calculate_Path_url, body, headers, token):
             result = response.json()
             return (result)
         else:
-            return ("Create module attribute failed! - " + str(response.text))
+            return ("Failed to Calculate Path! - " + str(response.text))
 
     except Exception as e:
         return (str(e)) 
@@ -135,15 +132,13 @@ def calculate_path(Calculate_Path_url, body, headers, token):
 res = calculate_path(Calculate_Path_url, body, headers, token)
 res
 ```
-
-{'taskID': 'dcf25655-81a9-4cfe-82ca-aef80a698971',
- 'statusCode': 790200,
- 'statusDescription': 'Success.'}
-    
+```python
+    {'taskID': 'dcf25655-81a9-4cfe-82ca-aef80a698971',
+     'statusCode': 790200,
+     'statusDescription': 'Success.'}
+```
 
 # cURL Code from Postman
-
-
 ```python
 curl -X POST \
   http://192.168.28.173/ServicesAPI/API/V1/CMDB/Path/Calculation \

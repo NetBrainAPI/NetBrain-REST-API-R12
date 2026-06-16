@@ -297,6 +297,15 @@ Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/hel
 2. Copy the `Client ID` and `Client Secret`.<br>
 ![OAuth ID Secret](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/2_OAuth_clientID_clientSecret.png)
 3. Call the API `ServicesAPI/auth/oauth2/token` to get API token. <br>
+
+   > **Headers — `application/x-www-form-urlencoded` (not JSON).** Unlike the proprietary `/V1/Session` API above, the OAuth 2.0 token endpoint follows [RFC 6749 §3.2](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2) — the request body must be form-urlencoded, not JSON. Sending `Content-Type: application/json` here will return `{"error":"invalid grant type"}` / HTTP 400 on strict OAuth gateways.
+
+   |**Name**|**Type**|**Description**|
+   |------|------|------|
+   |<img width=100/>|<img width=100/>|<img width=500/>|
+   | Content-Type | string  | support "application/x-www-form-urlencoded" |
+   | Accept | string  | support "application/json" |
+
 * via Postman
 ![OAuth Get Token](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/raw/main/REST%20APIs%20Documentation/Authentication%20and%20Authorization/Login%20Images/3_OAuth_get_token.png)
 * via script
@@ -309,7 +318,7 @@ Please also refer to [Open API](https://www.netbraintech.com/docs/12ac1ue0to/hel
     import pprint
 
     nb_url = 'https://netbrain.com/'
-    headers = {'Content-Type': 'application/json', 'Accept': 'application/json'} 
+    headers = {'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json'}
 
     def getOauth():
         full_url = nb_url + "ServicesAPI/auth/oauth2/token"

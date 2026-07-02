@@ -1,112 +1,89 @@
+
 # User API Design
 
-GET /V1/CMDB/Users{?username}&{?authenticationServer}
------------------------------------------------------
+## ***GET*** /V1/CMDB/Users{?username}{&authenticationServer}
+Call this API to get user information. If a username is provided, the API returns only that user's information. If no username is provided, the API returns information for all users.
 
-Calling this API to get user information. If input username, API return just
-this one user information. If no specific user name is input, API return all
-user information.
+## Detail Information
 
-Detail Information
-------------------
+> **Title** : Get User(s) Information API<br>
 
->   **Title** : Get User(s) information API
+> **Version** : 19/03/2024.
 
->   **Version** : 19/03/2024.
+> **API Server URL** : http(s)://IP address of NetBrain Web API Server/ServicesAPI/API/V1/CMDB/Users
 
->   **API Server URL** : http(s):// IP address of your NetBrain Web API Server
->   /ServicesAPI/API/V1/CMDB/Users
+> **Authentication** :
 
->   **Authentication** :
+|**Type**|**In**|**Name**|
+|------|------|------|
+|<img width=100/>|<img width=100/>|<img width=500/>|
+|Bearer Authentication| Parameters | Authentication token |
 
-| **Type**              | **In**     | **Name**             |
-|-----------------------|------------|----------------------|
-|                       |            |                      |
-| Bearer Authentication | Parameters | Authentication token |
+## Request body(****required***)
 
-Request body(\*\*\*\*required\*\*\*)
-------------------------------------
+>No request body.
 
->   No request body.
+## Query Parameters(****required***)
 
-Query Parameters(\*\*\*\*required\*\*\*)
-----------------------------------------
+|**Name**|**Type**|**Description**|
+|------|------|------|
+|<img width=100/>|<img width=100/>|<img width=500/>|
+|username | string | The name of the NetBrain system user. This field is the key to get the user information. If `username` is set to null or an empty string, the API returns information for all users. |
+|authenticationServer | string | The corresponding name of the authentication server. |
 
-| **Name**             | **Type** | **Description**                                                                                                                                                           |
-|----------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                      |          |                                                                                                                                                                           |
-| username | string | The name of Netbrain system user. This field is the key to get the user information. if set "username" = null or "username" == "", API will returns all users information |
-| authenticationServer^ | string   | The corresponding name of the authentication server |
+> **Note:** `authenticationServer` is an optional attribute used to prevent mis-retrieving when the same user account name exists on different servers. See the example below for details.
 
-**Note:** the "authenticationServer" is an optional attribute, to prevent
-mis-retrieving if same user account names exist in different servers.
-Check the detail in the following example.
+## Headers
 
-Headers
--------
+> **Data Format Headers**
 
->   **Data Format Headers**
+|**Name**|**Type**|**Description**|
+|------|------|------|
+|<img width=100/>|<img width=100/>|<img width=500/>|
+| Content-Type | string  | support "application/json" |
+| Accept | string  | support "application/json" |
 
-| **Name**     | **Type** | **Description**            |
-|--------------|----------|----------------------------|
-|              |          |                            |
-| Content-Type | string   | support "application/json" |
-| Accept       | string   | support "application/json" |
+> **Authorization Headers**
 
->   **Authorization Headers**
+|**Name**|**Type**|**Description**|
+|------|------|------|
+|<img width=100/>|<img width=100/>|<img width=500/>|
+| token | string  | Authentication token, get from login API. |
 
-| **Name** | **Type** | **Description**                           |
-|----------|----------|-------------------------------------------|
-|          |          |                                           |
-| token\*  | string   | Authentication token, get from login API. |
+## Response
 
-Response
---------
+|**Name**|**Type**|**Description**|
+|------|------|------|
+|<img width=100/>|<img width=100/>|<img width=500/>|
+|UserData| list of object | List of users info. |
+|UserData.username| string | The user name. This field is the key to update the user information. |
+|UserData.email| string | The email address of the user. |
+|UserData.firstName| string | The first name of the user. |
+|UserData.lastName| string | The last name of the user. |
+|UserData.allowChangePassword| bool | Decide whether to allow the user to change his/her password independently. |
+|UserData.isSystemAdmin| bool | Decide whether to allocate the system administrator role to the user. |
+|UserData.isUserManager| bool | Decide whether to allocate the user manager role to the user. |
+|UserData.isSystemManager| bool | Decide whether to allocate the system manager role to the user. |
+|UserData.creationTime| Time | Date and time of creation. |
+|UserData.lastUpdateTime| Time | Date and time of last update. |
+|UserData.status| integer | Status of the user account.<br>▪ 1 - Active<br>▪ 2 - Inactive<br>▪ 3 - Pending<br>▪ 4 - Deactivated<br>▪ 5 - Unavailable |
+|UserData.authenticationType| int | The authentication type for the user account.<br>▪ -2 - Token<br>▪ -1 - PortalAutoCreate<br>▪ 0 - NetBrain<br>▪ 1 - AD<br>▪ 2 - LDAP<br>▪ 3 - TACACS<br>▪ 4 - SAML |
+|UserData.phoneNumber| string | The phone number of the user. |
+|UserData.department| string | The department that the user belongs to. |
+|UserData.description| string | Any description about the user. |
+|UserData.deactivatedTime| string | Specify the time when the user account is expired. |
+|UserData.TenantAndRole| list of TenantAndRole object | Specify Tenant and Role for the user.<br>▪ tenantId (string) - the ID of the tenant that the user can access.<br>▪ tenantName (string) - the name of the tenant that the user can access.<br>▪ isAdmin (bool) - decide whether to allocate the tenant administrator role to the user. If false, you need to specify a domain for the user to access.<br>▪ domains (list of objects) - the list of domains this user can access.<br>▪ canAddDomain (bool) - decide whether to allow the user to create domains. |
+|users| list of object | The list containing the duplicate account information on different servers. |
+|users.authenticationServer| string | The name of the authentication server. |
+|users.userName| string | The name of the user account. |
+|statusCode| integer | Code issued by the NetBrain server indicating the execution result. |
+|statusDescription| string | The explanation of the status code. |
 
-| **Name**                     | **Type**                     | **Description**                                                                                                                                                                                                                                                                                                                       |
-|------------------------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                              |                              |                                                                                                                                                                                                                                                                                                                                       |
-| UserData                     | list of object               | List of users info.                                                                                                                                                                                                                                                                                                                   |
-| UserData.username            | string                       | The user name, this filed is the key to update the user information.                                                                                                                                                                                                                                                                  |
-| UserData.email               | string                       | The email address of the user.                                                                                                                                                                                                                                                                                                        |
-| UserData.firstName           | string                       | The first name of the user.                                                                                                                                                                                                                                                                                                           |
-| UserData.lastName            | string                       | The last name of the user.                                                                                                                                                                                                                                                                                                            |
-| UserData.allowChangePassword | bool                         | Decide whether to allow the user to change his/her password independently.                                                                                                                                                                                                                                                            |
-| UserData.isSystemAdmin       | string                       | Decide whether to allocate the system administrator role to the user.                                                                                                                                                                                                                                                                 |
-| UserData.isUserManager       | boolean                       | Decide whether to allocate the user manager role to the user.                                                                                                                                                                                                                                                                 |
-| UserData.isSystemManager       | boolean                       | Decide whether to allocate the system manager role to the user.                                                                                                                                                                                                                                                                 |
-| UserData.creationTime       | Time                       | Date and Time of creation                                                                                                                                                                                                                                                                 |
-| UserData.lastUpdateTime       | Time                       | Date and Time of last update                                                                                                                                                                                                                                                                 |
-| UserData.Status       | integer | Status of user accounts                                                                                                                                                                                                                                                                                                 |
-|                              |                              | ▪ Active - 1                                                                                                                                                                                                                                                                             |
-|                              |                              | ▪ Inactive - 2                                                                                                                                                                                                                                                                            |
-|                              |                              | ▪ Pending - 3                                                                                                                                                                                                                                                                              |
-|                              |                              | ▪ Deactivated - 4                                                                                                                                                                                                                                                                               |
-|                              |                              | ▪ Unavailable - 5                                                                                                                                                                                                                                                                               |
-| UserData.authenticationType  | int                          | The authentication type for the user account.                                                                                                                                                                                                                                                                                         |
-|                              |                              | ▪ 1 - Local                                                                                                                                                                                                                                                                                                                           |
-|                              |                              | ▪ 2 - External                                                                                                                                                                                                                                                                                                                        |
-| UserData.phoneNumber         | string                       | The phone number of the user.                                                                                                                                                                                                                                                                                                         |
-| UserData.department          | string                       | The department that the user belongs to.                                                                                                                                                                                                                                                                                              |
-| UserData.description         | string                       | Any description about the user.                                                                                                                                                                                                                                                                                                       |
-| UserData.deactivatedTime     | string                       | Specify the time when the user account is expired.                                                                                                                                                                                                                                                                                    |
-| UserData.TenantAndRole       | list of TenantAndRole object | Specify Tenant And Role for the user.                                                                                                                                                                                                                                                                                                 |
-|                              |                              | ▪ tenantId (string) - the ID of the tenant that the user can access.                                                                                                                                                                                                                                                                            |
-|                              |                              | ▪ tenantName (string) - the name of the tenant that the user can access.                                                                                                                                                                                                                                                                            |
-|                              |                              | ▪ isAdmin(bool) - decide whether to allocate the tenant administrator role to the user. If it is false, you need to specify a domain for the user to access.                                                                                                                                                                          |
-|                              |                              | ▪ domains (list of objects) - the list of domains this user can access.                                                                                                                                                                                                                                                                            |
-|                              |                              | ▪ canAddDomain(bool) - decide whether to allow the user to create domains.                                                                                                                                                                                                                                                            |
-| users                        | list of object               | The list contains the dupilcate account information in different server.                                                                                                                                                                                                                                                              |
-| users.authenticationServer   | string                       | The name of authentication server.                                                                                                                                                                                                                                                                                                    |
-| users.userName               | string                       | The name of the user account.                                                                                                                                                                                                                                                                                                         |
-| statusCode                   | integer                      | Code issued by NetBrain server indicating the execution result.                                                                                                                                                                                                                                                                       |
-| statusDescription            | bool                         | The explanation of the status code.                                                                                                                                                                                                                                                                                                   |
+> ***Example***
 
->   **Example**
+Normal response:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Normal Response:
-
+```python
 {
   "UserData": [
     {
@@ -294,8 +271,11 @@ Response
   "statusCode": 790200,
   "statusDescription": "Success."
 }
+```
 
-# response with duplicate user accounts in different server without aunthentication server provided in input.
+Response with duplicate user accounts on different servers when no authentication server is provided in the input:
+
+```python
 {
     "users": [
         {
@@ -308,14 +288,14 @@ Response
         }
     ],
     "statusCode": 792032,
-    "statusDescription": "There are users with the same name 'user1' in the system,You need to specify the authentication server."
+    "statusDescription": "There are users with the same name 'user1' in the system. You need to specify the authentication server."
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-Full Example:
-=============
+# Full Example:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```python
 # import python modules 
 import requests
 import time
@@ -334,8 +314,8 @@ headers["Token"] = token
 username = ""
 
 data = {
-        "username":username,
-        "authenticationServer":"NetBrain"
+        "username": username,
+        "authenticationServer": "NetBrain"
     }
 
 try:
@@ -347,10 +327,10 @@ try:
         print ("Get Users Information failed! - " + str(response.text))
     
 except Exception as e:
-    print (str(e))  
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    print (str(e))
+```
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```python
 {
   "UserData": [
     {
@@ -454,12 +434,12 @@ except Exception as e:
   "statusCode": 790200,
   "statusDescription": "Success."
 }
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-cURL Code from Postman:
-=======================
+# cURL Code from Postman:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```python
 curl -X GET \
   'http://192.168.31.191/ServicesAPI/API/V1/CMDB/Users?username=&authenticationServer=NetBrain' \
   -H 'Accept: */*' \
@@ -471,25 +451,23 @@ curl -X GET \
   -H 'User-Agent: PostmanRuntime/7.15.2' \
   -H 'cache-control: no-cache' \
   -H 'token: b5bb9a78-f1e2-4a6a-bc67-d9ec18944ecd'
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
-Error Examples:
-===============
+# Error Examples:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-###################################################################################################################    
 
+```python
 """Error 1: wrong inputs"""
 
 Input:
-    
+
         username = "kakakakaakak" # No user with a name called "kakakakaakak".
-    
+
 Response:
-    
+
     "Get Users Information failed! - 
         {
-            "statusCode":791006,
-            "statusDescription":"user kakakakaakak does not exist."
+            "statusCode": 791006,
+            "statusDescription": "user kakakakaakak does not exist."
         }"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```

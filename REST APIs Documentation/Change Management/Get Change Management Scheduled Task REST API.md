@@ -1,7 +1,7 @@
 
 # Change Management Scheduled Task API Design
 
-GET /V1/CMDB/CM/Tasks/ScheduledTask
+GET /V1/CM/Tasks/ScheduledTask
 -----------------------------------
 
 Call this API to get a Scheduled Task (ST) of an APPROVED Network Change (NC).
@@ -21,7 +21,7 @@ Detail Information
 >Version: 09/30/2019
 
 >API Server URL: http(s)://IP Address of NetBrain Web API
-Server/ServicesAPI/API/V1/CMDB/CM/Tasks/ScheduledTask/
+Server/ServicesAPI/API/V1/CM/Tasks/ScheduledTask/
 
 >Authentication:
 
@@ -151,7 +151,7 @@ except Exception as e:
 
 ```python
 curl -X GET \
-  http://192.168.28.139/ServicesAPI/API/V1/CMDB/CM/Tasks/ScheduledTask/453ac967-12ad-f8f1-5158-648500fa67fb \
+  http://192.168.28.139/ServicesAPI/API/V1/CM/Tasks/ScheduledTask/453ac967-12ad-f8f1-5158-648500fa67fb \
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
   -H 'Cache-Control: no-cache' \

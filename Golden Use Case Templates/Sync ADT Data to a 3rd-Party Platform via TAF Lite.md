@@ -23,7 +23,7 @@ Unlike the classic TAF flow (which requires the 3rd-party system to raise a tick
 
 **[Step 5: Automate the sync (optional)](Step-5:-Automate-the-sync)**
 
-**[Full Reusable Module](Full-Reusable-Module)** — a production-ready, 3-file version of Steps 1–4 for scheduled/unattended runs.
+**[Full Reusable Module](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/Golden%20Use%20Case%20Templates/Sync%20ADT%20Data%20to%20a%203rd-Party%20Platform%20via%20TAF%20Lite.md#full-reusable-module)** — a production-ready, 3-file version of Steps 1–4 for scheduled/unattended runs.
 
 ## Step 1: Use case preparation
 ***1a. Import modules and set configuration.***

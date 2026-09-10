@@ -84,12 +84,15 @@ As a result, the shape of the API response can differ based on the passed versio
 |**Name**|**Type**|**Description**|
 |------|------|------|
 |<img width=100/>|<img width=100/>|<img width=500/>|
-|hostdevice | list of object | List of object content detailed information of neighbor base on this device. |
-|hostdevice.interface | string | Interface name of the interface that belongs to `hostdevice`. |
-|hostdevice.connected_device | object | Detailed information of neighbor device that connects to `hostdevice`. |
-|hostdevice.connected_device.nbr_device| string | The hostname of the neighbor device that connect to `hostdevice`.|
-|hostdevice.connected_device.inteface_name| string | The interface name of the neighbor device that connects to the `hostdevice` interface.|
-|hostdevice.topology | string | The topology name in which this neighbor device belongs to, such as `L2_Topo_Type`, `L3_Topo_Type`, `Ipv6_L3_Topo_Type`, `VPN_Topo_Type` or `L2_Overlay_Topo_Type`. |
+|topology | list of object | One entry per device, holding that device's neighbor connections. |
+|topology.hostname | string | The name of the device that the neighbors in this entry belong to. |
+|topology.neighbors | list of object | The neighbor connections of `topology.hostname`. |
+|topology.neighbors.interface | string | The interface on `topology.hostname` that forms the connection, followed by its IP address and mask when the interface has one. <br>e.g. `Ethernet1/3 1.1.1.1/22` |
+|topology.neighbors.media | string | The media that this connection belongs to. <br>e.g. `1.1.1.1/22` <br>Returned for L3 topology types; omitted when null, such as on `L2_Topo_Type` connections. |
+|topology.neighbors.topology | string | The topology type that this connection belongs to: `L3_Topo_Type`, `L2_Topo_Type`, `Ipv6_L3_Topo_Type`, `L3_VPN_Topo_Type` or `L2_Overlay_Topo_Type`. |
+|topology.neighbors.connected_device | object | The neighbor device at the other end of the connection. |
+|topology.neighbors.connected_device.nbr_device | string | The name of the neighbor device that connects to `topology.hostname`. |
+|topology.neighbors.connected_device.nbr_intf | string | The interface on the neighbor device that connects to `topology.neighbors.interface`, followed by its IP address and mask when the interface has one. <br>e.g. `Management1 1.1.1.1/22` |
 |statusCode| integer | The returned status code of executing the API.  |
 |statusDescription| string | The explanation of the status code.  |
 

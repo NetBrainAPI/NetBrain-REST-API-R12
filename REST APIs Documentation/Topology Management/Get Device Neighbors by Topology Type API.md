@@ -10,7 +10,7 @@ This API returns the neighbor relationships of devices in the current working do
 
 It is recommended to pass parameter <i>version=1</i> instead of <i>version=0</i>
 <br>
-For legacy `version=0` design, see [Get Device Neighbors by Topology Type API_Version_0](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.3/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type_Version_0.md)
+For legacy `version=0` design, see [Get Device Neighbors by Topology Type API_Version_0](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API_Version_0.md)
 .
 ### Version interaction between URL and request body
 Starting from R12, the API supports multiple versions. The version segment `V` in the URL path (e.g. <b>V1</b> in API/V1/CMDB/Topology/Devices) identifies the NetBrain API version, and also controls the shape of the response payload.

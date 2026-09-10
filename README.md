@@ -251,10 +251,10 @@ To view the full list of all REST APIs, please refer to `REST APIs Documentation
 1) [Build L2 Topology API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Build%20L2%20Topology%20API.md)<br>
 2) [Build L3 Topology API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Build%20L3%20Topology%20API.md)<br>
 3) [Get Connected Switch Port API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Connected%20Switch%20Port%20API.md)<br>
-4) [Get Device Neighbors by Topology Type API Version_1](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API%20Version_1.md)
-5) [Get Device Neighbors by Topology Type API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API.md)<br>
+4) [Get Device Neighbors by Topology Type API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API.md)
+5) [Get Device Neighbors by Topology Type API_Version_0](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API_Version_0.md)<br>
 6) [Get One Ip Table API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20One%20Ip-Table%20API.md)
-5) [Get Topology Build Task Status API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Topology%20Build%20Task%20Status%20API.md)
+7) [Get Topology Build Task Status API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Topology%20Build%20Task%20Status%20API.md)
 
 ### [Trigger Diagnosis API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/tree/main/REST%20APIs%20Documentation/Trigger%20Diagnosis%20API)
 1) [Context Map Of Cisco ACI Device](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Trigger%20Diagnosis%20API/Trigger%20Map%20API%20--%20Open%20Context%20Map%20Of%20Cisco%20ACI%20Device.md)

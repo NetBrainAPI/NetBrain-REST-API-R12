@@ -8,7 +8,7 @@ Use this API to get specific neighbors of a device according to the specified to
 <b>Important</b>: This page describes the `version=0` design of `GET /V1/CMDB/Topology/Devices/Neighbors` - this is not the recommended format.<br>
 <br>
 It is recommended to pass parameter <i>version=1</i> instead of <i>version=0</i>. <br>
-For legacy `version=1` design, see [Get Device Neighbors by Topology Type API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12.3/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API.md)
+For legacy `version=1` design, see [Get Device Neighbors by Topology Type API](https://github.com/NetBrainAPI/NetBrain-REST-API-R12/blob/main/REST%20APIs%20Documentation/Topology%20Management/Get%20Device%20Neighbors%20by%20Topology%20Type%20API.md)
 
 ## Detail Information
 

@@ -1,7 +1,7 @@
 
 # Get Search Results API Design
 
-## ***GET*** V1/CMDB/Search
+## ***GET*** V3/CMDB/Search
 Call this API to get the list of device names with the matching search keyword from NetBrain IE.
 
 ## Detail Information
@@ -10,7 +10,7 @@ Call this API to get the list of device names with the matching search keyword f
 
 > **Version** : 03/24/2025.
 
-> **API Server URL** : http(s)://IP address of NetBrain Web API Server/ServicesAPI/API/V1/CMDB/Search
+> **API Server URL** : http(s)://IP address of NetBrain Web API Server/ServicesAPI/API/V3/CMDB/Search
 
 > **Authentication** : 
 

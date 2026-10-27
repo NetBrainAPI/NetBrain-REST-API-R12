@@ -61,7 +61,7 @@ All directed links in the result consists of a directed path graph, which contai
 |hopList| list of Object | Hop list. |
 |hopList.hopId| string | Hop Guid. |
 |hopList.srcDeviceName| string | Source device name. |
-|hopList.inboundIneterface| string | Source interface name. |
+|hopList.inboundInterface| string | Source interface name. |
 |hopList.mediaName| string | Media name. |
 |hopList.dstDeviceName| string | Destination device name. |
 |hopList.outboundInterface| string | Destination interface name. |
